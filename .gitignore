@@ -1,0 +1,12 @@
+# Yarn
+# =======
+node_modules
+yarn.lock
+
+# Jetbrains
+# =======
+.idea
+
+# Dist
+# =======
+docker/dist

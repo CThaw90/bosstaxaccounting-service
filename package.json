@@ -1,0 +1,26 @@
+{
+  "name": "bosstaxaccounting-service",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "yarn dist && docker build -t gscbinc/$npm_package_name:$npm_package_version docker",
+    "predist": "mkdir -p docker/dist && cp package.json docker/dist && cp src/index.js docker/dist",
+    "dist": "cd docker/dist && yarn install --registry $npm_package_registry && cd ../../",
+    "release": "yarn build",
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "Chris Thaw <cthaw@gscbinc.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "registry": "https://registry.npmjs.org/",
+  "engines": {
+    "node": ">= 12"
+  }
+}
