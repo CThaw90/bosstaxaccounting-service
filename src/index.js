@@ -26,11 +26,11 @@ app.post('/send-email', function (request, response) {
         const from = body.email;
         const text = textTemplate.replace(/{name}/, body.name).replace(/{service}/, body.service);
         const html = htmlTemplate.replace(/{name}/, body.name).replace(/{service}/, body.service);
-        const params = { to, from, subject, text, html };
+        const email = { to, from, subject, text, html };
         sendgrid.setApiKey(process.env.KEY);
-        sendgrid.send(request).then(() => {
-            console.log(params);
-            response.send({ status: 200, message: 'Email sent successfully'});
+        sendgrid.send(email).then(() => {
+            console.log(email);
+            response.send({ status: 200, message: 'Email sent successfully' });
         }).catch(message => {
             response.send({ status: 500, message });
         });
