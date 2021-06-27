@@ -5,7 +5,7 @@ const parser = require('body-parser');
 const sendgrid = require('@sendgrid/mail');
 
 const app = express();
-const to = 'cthaw@mailinator.com';
+const to = process.env.CONTACT_EMAIL || 'bosstaxact@mailinator.com';
 const subject = 'Boss Tax and Accounting inquiry';
 const textTemplate = 'Hello Latisha, my name is {name} and I am inquiring about services related to {service}' +
     ' at Boss Tax and Accounting. Kindly respond at your earliest convenience. I look forward to working with you.';
