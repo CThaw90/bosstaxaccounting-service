@@ -35,12 +35,16 @@ app.post('/send-email', function (request, response) {
             response.send({ status: 500, message });
         });
     }
+    else {
+        console.log('Error: Sendgrid key has not been set!');
+    }
 });
 
-let server, port = process.env.PORT || 8888;
+let server, port = process.env.PORT ? Number.parseInt(process.env.PORT) : 8888;
 server = http.createServer({}, app);
 
 server.listen(port, function () {
     console.log('Starting the Boss Tax and Accounting service');
-    console.log('App is currently listening on port ' + port);
+    console.log('App is currently listening on port: ' + port);
+    console.log('App is using contact email: ' + to);
 });
